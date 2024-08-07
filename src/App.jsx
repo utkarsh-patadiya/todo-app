@@ -36,7 +36,7 @@ function App() {
           todo.id !== editid ? todo : { ...todo, id: editid, txt: inputValue }
         )
       );
-      setisedit(false);
+      if (inputValue!=="") setisedit(false);
     }
   }
 
