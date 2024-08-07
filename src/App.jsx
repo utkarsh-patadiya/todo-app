@@ -1,7 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { v4 as uuidv4 } from "uuid";
-
+import Delete_svg from "./components/Delete-svg";
+import Edit_svg from "./components/Edit-svg";
+import Tick_svg from "./components/Tick-svg";
+import Add_svg from "./components/Add-svg";
 function App() {
   const formatDateTime = (date) => {
     return `${String(date.getMonth() + 1).padStart(2, "0")}/${String(
@@ -16,7 +19,25 @@ function App() {
   const [isedit, setisedit] = useState(false);
   const [editid, seteditid] = useState("");
   async function addTodo() {
-
+    if (inputValue !== "" && !isedit)
+      setTodos([
+        {
+          id: uuidv4(),
+          txt: inputValue,
+          is_edited: false,
+          date: formatDateTime(new Date()),
+        },
+        ...todos,
+      ]);
+    setInputValue("");
+    if (isedit) {
+      setTodos((todos) =>
+        todos.map((todo) =>
+          todo.id !== editid ? todo : { ...todo, id: editid, txt: inputValue }
+        )
+      );
+      setisedit(false);
+    }
   }
 
   useEffect(() => {
@@ -29,11 +50,21 @@ function App() {
   }, [todos]);
 
   function handleDel(id) {
+    if (!isedit) setTodos((todos) => todos.filter((todo) => todo.id !== id));
+  }
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission or other default actions
+      addTodo(); // Call the addTodo function
+    }
   };
 
   function handleEdit(todo) {
-
+    setisedit(true);
+    setInputValue(todo.txt);
+    seteditid(todo.id);
+    document.getElementById("todobox").focus();
   }
 
   return (
