@@ -1,3 +1,13 @@
+body {
+  background-image: url('back.jpg');
+  background-size: cover; /* Ensure the image covers the whole area */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center center; /* Center the image */
+  display: flex; /* Allow centering content */
+  flex-direction: column; /* Stack content vertically */
+  height: 100vh; /* Ensure the body takes up full viewport height */
+}
+
 .button {
   width: 50px;
   height: 50px;

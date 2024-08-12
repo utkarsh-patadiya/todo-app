@@ -68,24 +68,24 @@ function App() {
   }
 
   return (
-    <>
-      <div className="h-10 bg-blue-700 font-thin text-2xl flex items-center justify-center transition-all text-blue-100 py-4 mb-10">
+    <div id="content">
+      <div className="h-10 bg-transparent backdrop-blur-md font-thin text-2xl flex items-center justify-center transition-all text-blue-100 py-4 mb-10">
         Todo App
       </div>
 
       <div className="flex items-center justify-center">
-        <div className="bg-blue-200 rounded-3xl text-xl min-w-[330px] w-4/6 max-w-[1000px] min-h-[500px] pb-5">
+        <div className="bg-[#00000099] border-[0.1px] border-[#ffffff3f] backdrop-blur-3xl rounded-xl text-xl min-w-[330px] w-4/6 max-w-[1000px] min-h-[500px] pb-5 shadow-[0_35px_60px_-40px_rgba(255,255,255,0.5)]">
           <div className="m-6 flex justify-evenly md:justify-between">
             <input
               id="todobox"
-              className="w-10/12 pl-2 p-2 rounded-2xl text-sm outline-none border focus:border-blue-400 bg-[#deedff] placeholder:text-gray-600"
+              className="text-white mx-4 w-full pl-2 p-2 rounded-sm text-sm outline-none border border-gray-500 focus:border-gray-400 bg-[#333f] placeholder:text-gray-400"
               placeholder="Enter a Todo"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
             />
             <button
-              className={`group cursor-pointer outline-none hover:rotate-${
+              className={`transition-all group cursor-pointer outline-none hover:rotate-${
                 isedit ? "0" : "90"
               } duration-300`}
               title="Add New"
@@ -97,14 +97,14 @@ function App() {
             </button>
           </div>
           <div className="flex flex-col items-center justify-center w-full">
-            <div className="mb-2 w-11/12 h-[0.25px] bg-blue-500" />
+            <div className="mb-2 w-11/12 h-[0.25px] bg-gray-400" />
 
             {todos.map((todo) => (
               <div
                 key={todo.id}
-                className={`relative flex items-center justify-between rounded-l-lg rounded-r-[50px] text-sm mt-2 w-11/12 h-full
+                className={`text-white border border-[#fff2] hover:border-green-500 relative flex items-center justify-between rounded-l-lg rounded-r-[50px] text-sm mt-2 w-11/12 h-full transition-all
                   ${
-                    isedit && editid === todo.id ? "bg-blue-500" : "bg-blue-300"
+                    isedit && editid === todo.id ? "bg-gray-500" : "bg-[#1118]"
                   }`}
                 x
               >
@@ -136,7 +136,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

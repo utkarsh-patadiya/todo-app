@@ -10,12 +10,12 @@ const Tick_svg = ({color}) => {
         width="50px"
       >
         <path
-          strokeWidth="1.5"
+          strokeWidth="1.3"
           d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
         ></path>
         <path
-          d="M5 12 L10 17 L20 5"
-          strokeWidth="2"
+          d="M7 12 L10 15 L16 9"
+          strokeWidth="1"
         />
       </svg>
     </div>
